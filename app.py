@@ -108,19 +108,19 @@ st.markdown("""
     /* Header Styling */
     .cbc-header {
         background-color: #002F6C;
-        border-bottom: 3px solid #B8973B;
-        padding: 1.5rem 4rem;
-        margin: -5rem -10rem 3rem -10rem;
+        border-bottom: 4px solid #B8973B;
+        padding: 2.5rem 4rem;
+        margin: -1.5rem -10rem 5rem -10rem;
         display: flex;
         align-items: center;
-        gap: 1rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        gap: 1.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
     
     .logo-badge {
         background-color: #B8973B;
-        width: 42px;
-        height: 42px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -128,7 +128,7 @@ st.markdown("""
         font-family: 'Playfair Display', serif;
         font-weight: 800;
         color: #002F6C;
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .logo-text-container {
@@ -139,26 +139,26 @@ st.markdown("""
     .logo-text {
         font-family: 'Playfair Display', serif;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 32px;
         color: #FFFFFF;
         line-height: 1;
     }
 
     .logo-subtitle {
         color: #D4AF50;
-        font-size: 10px;
+        font-size: 11px;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 600;
-        margin-top: 2px;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+        margin-top: 4px;
     }
 
     /* Message Bubbles */
     .chat-container {
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
-        margin-bottom: 3rem;
+        gap: 3.5rem;
+        margin-bottom: 4rem;
     }
 
     .bubble {

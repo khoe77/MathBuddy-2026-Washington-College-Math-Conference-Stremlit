@@ -138,13 +138,13 @@ const parseMap = (text: string): { mapData: MapData | null; before: string } => 
 // ==========================================
 
 const Header = () => (
-  <header className="bg-cbc-navy border-b-3 border-cbc-gold px-6 py-5 -mx-6 mb-10 flex items-center gap-4 shadow-md">
-    <div className="bg-cbc-gold w-10 h-10 rounded-full flex items-center justify-center font-serif font-extrabold text-cbc-navy text-xl shrink-0">
+  <header className="bg-cbc-navy border-b-4 border-cbc-gold px-8 py-8 -mx-6 mb-16 flex items-center gap-6 shadow-xl">
+    <div className="bg-cbc-gold w-12 h-12 rounded-full flex items-center justify-center font-serif font-extrabold text-cbc-navy text-2xl shrink-0 shadow-inner">
       M
     </div>
     <div className="flex flex-col">
-      <h1 className="font-serif font-bold text-2xl text-white leading-none">MathBuddy</h1>
-      <span className="text-cbc-gold-bright text-[10px] uppercase tracking-widest font-semibold mt-1">
+      <h1 className="font-serif font-bold text-3xl text-white leading-tight">MathBuddy</h1>
+      <span className="text-cbc-gold-bright text-xs uppercase tracking-[0.2em] font-bold mt-1.5 opacity-90">
         Columbia Basin College
       </span>
     </div>
@@ -351,7 +351,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-cbc-off-white flex flex-col max-w-3xl mx-auto px-6 font-sans">
+    <div className="min-h-screen bg-cbc-off-white flex flex-col max-w-3xl mx-auto px-6 pt-8 font-sans">
       <Header />
 
       <main className="flex-1 flex flex-col relative overflow-hidden">
@@ -371,7 +371,7 @@ export default function App() {
             
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto pr-2 space-y-10 scroll-smooth pb-32 no-scrollbar"
+              className="flex-1 overflow-y-auto pr-2 space-y-14 scroll-smooth pb-32 no-scrollbar"
               style={{ maxHeight: 'calc(100vh - 300px)' }}
             >
               <AnimatePresence initial={false}>
