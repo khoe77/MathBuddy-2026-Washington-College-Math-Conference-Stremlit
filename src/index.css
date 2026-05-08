@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Source Sans 3", sans-serif;
+
+  --color-cbc-navy: #002F6C;
+  --color-cbc-gold: #B8973B;
+  --color-cbc-gold-bright: #D4AF50;
+  --color-cbc-off-white: #F8F7F4;
+  --color-cbc-border: #DDE3EE;
+  --color-cbc-text: #0D1B35;
+  --color-cbc-text-muted: #4A5568;
+}
+
+@layer base {
+  body {
+    @apply bg-cbc-off-white text-cbc-text font-sans;
+  }
+}
+
+@layer components {
+  .markdown-body p {
+    @apply mb-2 last:mb-0;
+  }
+  .markdown-body ul {
+    @apply list-disc list-inside mb-2;
+  }
+  .markdown-body ol {
+    @apply list-decimal list-inside mb-2;
+  }
+  .markdown-body strong {
+    @apply font-bold;
+  }
+  .markdown-body em {
+    @apply italic;
+  }
+  .markdown-body code {
+    @apply bg-slate-100 px-1 rounded font-mono text-xs;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
