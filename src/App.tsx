@@ -159,9 +159,18 @@ const Footer = () => (
 
 const WelcomeScreen = ({ onSelectExample }: { onSelectExample: (text: string) => void }) => {
   const examples = [
-    { id: 'ladder', text: "A 10-foot ladder leans against a wall. The bottom slides away at 2 ft/sec. How fast is the top sliding down when the bottom is 6 feet from the wall?" },
-    { id: 'derivative', text: "Find the derivative of f(x) = x³ ln(x) using the product rule." },
-    { id: 'log', text: "Solve: log₂(x + 3) + log₂(x - 1) = 5" }
+    { 
+      title: "Related Rates", 
+      text: "A 10-foot ladder leans against a wall. The bottom slides away at 2 ft/sec. How fast is the top sliding down when the bottom is 6 feet from the wall?" 
+    },
+    { 
+      title: "The Product Rule", 
+      text: "Find the derivative of f(x) = x³ ln(x) using the product rule." 
+    },
+    { 
+      title: "Logarithmic Equations", 
+      text: "Solve: log₂(x + 3) + log₂(x - 1) = 5" 
+    }
   ];
 
   return (
@@ -188,20 +197,23 @@ const WelcomeScreen = ({ onSelectExample }: { onSelectExample: (text: string) =>
         className="text-cbc-text-muted max-w-md mb-8 leading-relaxed"
       >
         I'm here to help you think through math problems — not just
-        give you the answer. Select an example below or type your problem to get started.
+        give you the answer. Select a topic below to get started.
       </motion.p>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl">
+      <div className="grid grid-cols-1 gap-4 w-full max-w-2xl">
         {examples.map((ex, idx) => (
           <motion.button
-            key={ex.id}
+            key={idx}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 + idx * 0.1 }}
             onClick={() => onSelectExample(ex.text)}
-            className="p-4 bg-white border border-cbc-border rounded-xl text-xs text-cbc-text hover:border-cbc-gold hover:shadow-md transition-all text-left h-full flex items-center"
+            className="p-5 bg-white border border-cbc-border rounded-xl text-cbc-text hover:border-cbc-gold hover:shadow-md transition-all text-left flex flex-col gap-1 group"
           >
-            {ex.text}
+            <span className="text-[10px] uppercase font-bold text-cbc-gold tracking-widest leading-none mb-1 group-hover:text-cbc-navy transition-colors">{ex.title}</span>
+            <span className="text-sm leading-relaxed text-cbc-text-muted group-hover:text-cbc-text transition-colors">
+              {ex.text}
+            </span>
           </motion.button>
         ))}
       </div>
@@ -358,7 +370,7 @@ export default function App() {
             
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto pr-2 space-y-4 scroll-smooth pb-32 no-scrollbar"
+              className="flex-1 overflow-y-auto pr-2 space-y-10 scroll-smooth pb-32 no-scrollbar"
               style={{ maxHeight: 'calc(100vh - 300px)' }}
             >
               <AnimatePresence initial={false}>

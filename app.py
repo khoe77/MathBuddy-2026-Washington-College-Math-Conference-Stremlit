@@ -156,13 +156,15 @@ st.markdown("""
     .chat-container {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
     }
 
     .bubble {
         padding: 12px 16px;
         max-width: 80%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     .student-bubble {
@@ -413,24 +415,21 @@ if not st.session_state.messages:
         <div class="welcome-heading">Hi! I'm MathBuddy.</div>
         <div class="welcome-subtext">
             I'm here to help you think through math problems — not just
-            give you the answer. Type your problem in the box below to get started.
+            give you the answer. Select a topic below to get started.
         </div>
     </div>
     """, unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("Ladder Problem", use_container_width=True):
-            user_input = "A 10-foot ladder leans against a wall. The bottom slides away at 2 ft/sec. How fast is the top sliding down when the bottom is 6 feet from the wall?"
-            st.session_state.temp_input = user_input
-    with col2:
-        if st.button("Product Rule", use_container_width=True):
-            user_input = "Find the derivative of f(x) = x³ ln(x) using the product rule."
-            st.session_state.temp_input = user_input
-    with col3:
-        if st.button("Log Equation", use_container_width=True):
-            user_input = "Solve: log₂(x + 3) + log₂(x - 1) = 5"
-            st.session_state.temp_input = user_input
+    examples = [
+        {"title": "Related Rates", "text": "A 10-foot ladder leans against a wall. The bottom slides away at 2 ft/sec. How fast is the top sliding down when the bottom is 6 feet from the wall?"},
+        {"title": "The Product Rule", "text": "Find the derivative of f(x) = x³ ln(x) using the product rule."},
+        {"title": "Logarithmic Equations", "text": "Solve: log₂(x + 3) + log₂(x - 1) = 5"}
+    ]
+
+    for ex in examples:
+        if st.button(f"**{ex['title']}**\n\n{ex['text']}", use_container_width=True):
+            st.session_state.temp_input = ex['text']
+            st.rerun()
 else:
     # Action Bar
     if st.button("↺ Start over", type="secondary"):
