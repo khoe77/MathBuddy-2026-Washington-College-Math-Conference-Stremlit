@@ -138,13 +138,13 @@ const parseMap = (text: string): { mapData: MapData | null; before: string } => 
 // ==========================================
 
 const Header = () => (
-  <header className="bg-cbc-navy border-b-3 border-cbc-gold px-6 py-4 -mx-6 -mt-6 mb-8 flex items-center gap-4">
-    <div className="bg-cbc-gold w-10 h-10 rounded-full flex items-center justify-center font-serif font-extrabold text-cbc-navy text-xl">
+  <header className="bg-cbc-navy border-b-3 border-cbc-gold px-6 py-5 -mx-6 mb-10 flex items-center gap-4 shadow-md">
+    <div className="bg-cbc-gold w-10 h-10 rounded-full flex items-center justify-center font-serif font-extrabold text-cbc-navy text-xl shrink-0">
       M
     </div>
     <div className="flex flex-col">
       <h1 className="font-serif font-bold text-2xl text-white leading-none">MathBuddy</h1>
-      <span className="text-cbc-gold-bright text-[10px] uppercase tracking-widest font-semibold mt-0.5">
+      <span className="text-cbc-gold-bright text-[10px] uppercase tracking-widest font-semibold mt-1">
         Columbia Basin College
       </span>
     </div>
@@ -313,8 +313,8 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const response = await chat.current.sendMessage(text);
-      const reply = response.text;
+      const result = await chat.current.sendMessage(text);
+      const reply = result.response.text();
       
       const { mapData, before } = parseMap(reply);
       
@@ -341,16 +341,17 @@ export default function App() {
 
   const handleStartOver = () => {
     setMessages([]);
-    chat.current = ai.chats.create({
-      model: "gemini-3-flash-preview",
-      config: {
-        systemInstruction: SYSTEM_PROMPT,
-      }
+    const model = ai.getGenerativeModel({
+      model: "gemini-1.5-flash",
+      systemInstruction: SYSTEM_PROMPT,
+    });
+    chat.current = model.startChat({
+      history: [],
     });
   };
 
   return (
-    <div className="min-h-screen bg-cbc-off-white flex flex-col max-w-3xl mx-auto px-6 pt-6 font-sans">
+    <div className="min-h-screen bg-cbc-off-white flex flex-col max-w-3xl mx-auto px-6 font-sans">
       <Header />
 
       <main className="flex-1 flex flex-col relative overflow-hidden">

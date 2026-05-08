@@ -109,11 +109,12 @@ st.markdown("""
     .cbc-header {
         background-color: #002F6C;
         border-bottom: 3px solid #B8973B;
-        padding: 1rem 4rem;
-        margin: -6rem -10rem 2rem -10rem;
+        padding: 1.5rem 4rem;
+        margin: -5rem -10rem 3rem -10rem;
         display: flex;
         align-items: center;
         gap: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
     
     .logo-badge {
