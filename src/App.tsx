@@ -270,17 +270,18 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const ai = useMemo(() => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! }), []);
+  const ai = useMemo(() => new GoogleGenAI(process.env.GEMINI_API_KEY!), []);
 
   const chat = useRef<any>(null);
 
   useEffect(() => {
     if (!chat.current) {
-      chat.current = ai.chats.create({
-        model: "gemini-3-flash-preview",
-        config: {
-          systemInstruction: SYSTEM_PROMPT,
-        }
+      const model = ai.getGenerativeModel({
+        model: "gemini-1.5-flash",
+        systemInstruction: SYSTEM_PROMPT,
+      });
+      chat.current = model.startChat({
+        history: [],
       });
     }
   }, [ai]);

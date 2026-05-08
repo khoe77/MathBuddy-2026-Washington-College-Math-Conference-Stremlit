@@ -1,5 +1,5 @@
 {
-  "name": "MathBuddy",
+  "name": "MathBuddy_Streamlit",
   "description": "A friendly Socratic AI math tutor for Columbia Basin College (CBC) students, powered by Gemini.",
   "requestFramePermissions": [],
   "majorCapabilities": []
